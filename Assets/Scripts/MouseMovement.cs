@@ -31,10 +31,9 @@ public class MouseMovement : MonoBehaviour
         
         //Rotation around the Y Axis (Look left and right)
         yRotation += mouseX;
-        player.transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
-        
+        player.transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
         
         //Apply rotations to our transform
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }

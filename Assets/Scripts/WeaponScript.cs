@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class WeaponScript : MonoBehaviour
 {
-    public Camera playerCamera;
+    //public Camera playerCamera;
     
     //Shooting
     public bool isShooting, readyToShoot;
@@ -100,7 +100,7 @@ public class WeaponScript : MonoBehaviour
     public Vector3 CalculateDirectionAndSpread()
     {
         //Shooting from the middle of the screen
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         Vector3 targetPoint;

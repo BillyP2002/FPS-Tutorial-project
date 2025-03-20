@@ -17,10 +17,24 @@ public class BulletScript : MonoBehaviour
             CreateBulletImpactEffect(collision);
             Destroy(gameObject);
         }
+        
+        if (collision.gameObject.CompareTag("Bottle"))
+        {
+            print("hit " + collision.gameObject.name + "!");
+            collision.gameObject.GetComponent<Bottle>().Shatter();
+            
+            //We will not destroy the bullet on impact, it will be destroyed through lifetime or solid object 
+        }
     }
 
     void CreateBulletImpactEffect(Collision objectHit)
     {
         ContactPoint contact = objectHit.contacts[0];
+        
+        GameObject hole = Instantiate(
+            GlobalReference.Instance.bulletImpactEffectPrefab,
+            contact.point,
+            Quaternion.LookRotation(contact.normal)
+            );
     }
 }
