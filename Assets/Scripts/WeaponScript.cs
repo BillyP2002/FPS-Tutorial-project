@@ -1,5 +1,6 @@
 using System.Collections;
 using System.IO.IsolatedStorage;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -27,6 +28,22 @@ public class WeaponScript : MonoBehaviour
     
     public GameObject muzzleEffect;
     private Animator animator;
+    
+    //Loading
+    public float reloadTime;
+    public int magazineSize, bulletsLeft;
+    public bool isReloading;
+    
+    public Vector3 spawnPosition;
+    public Vector3 spawnRotation;
+
+    public enum WeaponModel
+    {
+        M1911,
+        AK74
+    }
+
+    public WeaponModel thisWeaponModel;
 
     public enum ShootingMode
     {
@@ -42,11 +59,18 @@ public class WeaponScript : MonoBehaviour
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
         animator = GetComponent<Animator>();
+        
+        bulletsLeft = magazineSize;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (bulletsLeft == 0 && isShooting)
+        {
+            SoundManager.Instance.emptySoundAK74.Play();
+        }
+        
         if (currentShootingMode == ShootingMode.Auto)
         {
             //Holding down left mouse button
@@ -57,11 +81,28 @@ public class WeaponScript : MonoBehaviour
             //clicking left mouse button once
             isShooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
+        
+        //pressing R key
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && isReloading == false)
+        {
+            Reload();
+        }
 
-        if (readyToShoot && isShooting)
+        //Autoreload when magazine is empty
+        if (readyToShoot && isShooting == false && isReloading == false && bulletsLeft <= 0)
+        {
+            Reload();
+        }
+
+        if (readyToShoot && isShooting && bulletsLeft > 0)
         {
             burstBulletsLeft = bulletsPerBurst;
             FireWeapon();
+        }
+
+        if (AmmoManager.Instance.ammoText != null)
+        {
+            AmmoManager.Instance.ammoText.text = $"{bulletsLeft/bulletsPerBurst}/{magazineSize/bulletsPerBurst}";
         }
     }
 
@@ -69,7 +110,7 @@ public class WeaponScript : MonoBehaviour
     {
         muzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("recoil");
-        SoundManager.Instance.shootingSoundAK74.Play();
+        SoundManager.Instance.PlayShootingSound(thisWeaponModel);
         
         readyToShoot = false;
         
@@ -97,6 +138,22 @@ public class WeaponScript : MonoBehaviour
             burstBulletsLeft--;
             Invoke("FireWeapon", shootingDelay);
         }
+    }
+
+    private void Reload()
+    {
+        SoundManager.Instance.PlayReloadSound(thisWeaponModel);
+        
+        animator.SetTrigger("reload");
+        
+        isReloading = true;
+        Invoke("ReloadCompleted", reloadTime);
+    }
+
+    private void ReloadCompleted()
+    {
+        bulletsLeft = magazineSize;
+        isReloading = false;
     }
 
     private void ResetShot()
