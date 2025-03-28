@@ -34,8 +34,8 @@ public class WeaponScript : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
     
-    public Vector3 spawnPosition;
-    public Vector3 spawnRotation;
+    //public Vector3 spawnPosition;
+    //public Vector3 spawnRotation;
 
     public enum WeaponModel
     {
