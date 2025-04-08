@@ -1,8 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance { get; set; }
+    
+    public WeaponScript hoveredWeapon = null;
 
     private void Awake()
     {
@@ -27,7 +30,20 @@ public class InteractionManager : MonoBehaviour
 
             if (objectHitByRaycast.GetComponent<WeaponScript>())
             {
-                print("Weapon Selected");
+                hoveredWeapon = objectHitByRaycast.gameObject.GetComponent<WeaponScript>();
+                hoveredWeapon.GetComponent<Outline>().enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    WeaponManager.Instance.PickupWeapon(objectHitByRaycast.gameObject);
+                }
+            }
+            else
+            {
+                if (hoveredWeapon)
+                {
+                    hoveredWeapon.GetComponent<Outline>().enabled = false;
+                }
             }
         }
     }

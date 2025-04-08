@@ -12,6 +12,7 @@ public class WeaponScript : MonoBehaviour
     public bool isShooting, readyToShoot;
     bool allowReset = true;
     public float shootingDelay = 2f;
+    public bool isActiveWeapon;
     
     //Burst
     public int bulletsPerBurst = 3;
@@ -66,43 +67,47 @@ public class WeaponScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bulletsLeft == 0 && isShooting)
+        if(isActiveWeapon)
         {
-            SoundManager.Instance.emptySoundAK74.Play();
-        }
-        
-        if (currentShootingMode == ShootingMode.Auto)
-        {
-            //Holding down left mouse button
-            isShooting = Input.GetKey(KeyCode.Mouse0);
-        }
-        else if (currentShootingMode == ShootingMode.Burst || currentShootingMode == ShootingMode.Single)
-        {
-            //clicking left mouse button once
-            isShooting = Input.GetKeyDown(KeyCode.Mouse0);
-        }
-        
-        //pressing R key
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && isReloading == false)
-        {
-            Reload();
-        }
+            
+            if (bulletsLeft == 0 && isShooting)
+            {
+                SoundManager.Instance.emptySoundAK74.Play();
+            }
 
-        //Autoreload when magazine is empty
-        if (readyToShoot && isShooting == false && isReloading == false && bulletsLeft <= 0)
-        {
-            Reload();
-        }
+            if (currentShootingMode == ShootingMode.Auto)
+            {
+                //Holding down left mouse button
+                isShooting = Input.GetKey(KeyCode.Mouse0);
+            }
+            else if (currentShootingMode == ShootingMode.Burst || currentShootingMode == ShootingMode.Single)
+            {
+                //clicking left mouse button once
+                isShooting = Input.GetKeyDown(KeyCode.Mouse0);
+            }
 
-        if (readyToShoot && isShooting && bulletsLeft > 0)
-        {
-            burstBulletsLeft = bulletsPerBurst;
-            FireWeapon();
-        }
+            //pressing R key
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && isReloading == false)
+            {
+                Reload();
+            }
 
-        if (AmmoManager.Instance.ammoText != null)
-        {
-            AmmoManager.Instance.ammoText.text = $"{bulletsLeft/bulletsPerBurst}/{magazineSize/bulletsPerBurst}";
+            //Autoreload when magazine is empty
+            if (readyToShoot && isShooting == false && isReloading == false && bulletsLeft <= 0)
+            {
+                Reload();
+            }
+
+            if (readyToShoot && isShooting && bulletsLeft > 0)
+            {
+                burstBulletsLeft = bulletsPerBurst;
+                FireWeapon();
+            }
+
+            if (AmmoManager.Instance.ammoText != null)
+            {
+                AmmoManager.Instance.ammoText.text = $"{bulletsLeft / bulletsPerBurst}/{magazineSize / bulletsPerBurst}";
+            }
         }
     }
 
