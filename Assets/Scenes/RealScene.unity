@@ -257,6 +257,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1335571199}
+  - {fileID: 6474983621541095546}
+  - {fileID: 8420263899568178813}
   m_Father: {fileID: 1085331834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
@@ -513,8 +515,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6474983621541095546}
+  m_Children: []
   m_Father: {fileID: 1085331834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492536591
@@ -997,54 +998,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &994894290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 994894292}
-  - component: {fileID: 994894291}
-  m_Layer: 0
-  m_Name: WeaponManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &994894291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994894290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead48392aae324b438bfdd995645dafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponSlots:
-  - {fileID: 432529110}
-  - {fileID: 1712073226}
-  activeWeaponSlot: {fileID: 0}
---- !u!4 &994894292
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994894290}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9574857, y: 6.417372, z: 11.078522}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1027067581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,7 +1460,6 @@ MonoBehaviour:
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.2
-  isActiveWeapon: 0
   bulletsPerBurst: 3
   burstBulletsLeft: 0
   spreadIntensity: 0
@@ -2120,68 +2072,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8420263899568178813}
+  m_Children: []
   m_Father: {fileID: 1085331834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
 --- !u!1 &1867862881 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8792500477941673050, guid: a89892b36523c074bbc433b762d84185, type: 3}
   m_PrefabInstance: {fileID: 6126638798926670388}
   m_PrefabAsset: {fileID: 0}
-=======
---- !u!1 &1846503628
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1846503630}
-  - component: {fileID: 1846503629}
-  m_Layer: 0
-  m_Name: InteractionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1846503629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846503628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5754d73bcdd55d94d9c86b31332dc227, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoveredWeapon: {fileID: 0}
---- !u!4 &1846503630
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846503628}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5991187, y: 5.2531066, z: 8.030937}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1867862881 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8792500477941673050, guid: a89892b36523c074bbc433b762d84185, type: 3}
-  m_PrefabInstance: {fileID: 6126638798926670388}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &1887990829
 GameObject:
   m_ObjectHideFlags: 0
@@ -7303,7 +7201,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 432529111}
+    m_TransformParent: {fileID: 330585546}
     m_Modifications:
     - target: {fileID: 3539210992454982496, guid: a89892b36523c074bbc433b762d84185, type: 3}
       propertyPath: ammoText
@@ -7355,7 +7253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9206752610193594046, guid: a89892b36523c074bbc433b762d84185, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: -0.22000006
       objectReference: {fileID: 0}
     - target: {fileID: 9206752610193594046, guid: a89892b36523c074bbc433b762d84185, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7433,7 +7331,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1712073227}
+    m_TransformParent: {fileID: 330585546}
     m_Modifications:
     - target: {fileID: 7016894452865714185, guid: c3b4d3d4ecc2def4f94a4a1e947111de, type: 3}
       propertyPath: m_Name
@@ -7441,7 +7339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7016894452865714185, guid: c3b4d3d4ecc2def4f94a4a1e947111de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7327802485654776574, guid: c3b4d3d4ecc2def4f94a4a1e947111de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7449,7 +7347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7327802485654776574, guid: c3b4d3d4ecc2def4f94a4a1e947111de, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5380003
+      value: -0.162
       objectReference: {fileID: 0}
     - target: {fileID: 7327802485654776574, guid: c3b4d3d4ecc2def4f94a4a1e947111de, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7585,8 +7483,3 @@ SceneRoots:
   - {fileID: 9058735463393999389}
   - {fileID: 1707566583041655243}
   - {fileID: 1643739266}
-<<<<<<< Updated upstream
-=======
-  - {fileID: 1846503630}
-  - {fileID: 994894292}
->>>>>>> Stashed changes
