@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class InteractionManager : MonoBehaviour
         {
             GameObject objectHitByRaycast = hit.transform.gameObject;
 
-            if (objectHitByRaycast.GetComponent<WeaponScript>())
+            if (objectHitByRaycast.GetComponent<WeaponScript>() && objectHitByRaycast.GetComponent<WeaponScript>().isActiveAndEnabled == false)
             {
                 hoveredWeapon = objectHitByRaycast.gameObject.GetComponent<WeaponScript>();
                 hoveredWeapon.GetComponent<Outline>().enabled = true;
@@ -49,4 +50,3 @@ public class InteractionManager : MonoBehaviour
     }
     
 }
-

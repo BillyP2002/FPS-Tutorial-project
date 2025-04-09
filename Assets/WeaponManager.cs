@@ -39,6 +39,15 @@ public class WeaponManager : MonoBehaviour
                 weaponSlot.SetActive(false);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SwitchActiveSlot(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SwitchActiveSlot(1);
+        }
     }
     
 
@@ -49,6 +58,8 @@ public class WeaponManager : MonoBehaviour
 
     private void AddWeaponIntoActiveSlot(GameObject pickedUpWeapon)
     {
+        DropCurrentWeapon(pickedUpWeapon);
+        
         pickedUpWeapon.transform.SetParent(activeWeaponSlot.transform, false);
 
         WeaponScript weapon = pickedUpWeapon.GetComponent<WeaponScript>();
@@ -57,5 +68,37 @@ public class WeaponManager : MonoBehaviour
         pickedUpWeapon.transform.localRotation = Quaternion.Euler(weapon.spawnRotation.x, weapon.spawnRotation.y, weapon.spawnRotation.z);
 
         weapon.isActiveWeapon = true;
+    }
+
+    private void DropCurrentWeapon(GameObject pickedUpWeapon)
+    {
+        if (activeWeaponSlot.transform.childCount > 0)
+        {
+            var weaponToDrop = activeWeaponSlot.transform.GetChild(0).gameObject;
+
+            weaponToDrop.GetComponent<WeaponScript>().isActiveWeapon = false;
+            
+            weaponToDrop.transform.SetParent(pickedUpWeapon.transform.parent);
+            weaponToDrop.transform.localPosition = pickedUpWeapon.transform.localPosition;
+            weaponToDrop.transform.localRotation = pickedUpWeapon.transform.localRotation;
+        }
+    }
+
+    public void SwitchActiveSlot(int slotNumber)
+    {
+        if (activeWeaponSlot.transform.childCount > 0)
+        {
+            WeaponScript currentWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<WeaponScript>();
+            currentWeapon.isActiveWeapon = false;
+        }
+        
+        activeWeaponSlot = weaponSlots[slotNumber];
+        
+        if (activeWeaponSlot.transform.childCount > 0)
+        {
+            WeaponScript newWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<WeaponScript>();
+            newWeapon.isActiveWeapon = true;
+        }
+        
     }
 }
