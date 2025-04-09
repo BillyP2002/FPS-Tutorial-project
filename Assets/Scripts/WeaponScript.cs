@@ -28,7 +28,7 @@ public class WeaponScript : MonoBehaviour
     public float bulletPrefabLifeTime = 3f;
     
     public GameObject muzzleEffect;
-    private Animator animator;
+    internal Animator animator;
     
     //Loading
     public float reloadTime;
