@@ -103,11 +103,7 @@ public class WeaponScript : MonoBehaviour
                 burstBulletsLeft = bulletsPerBurst;
                 FireWeapon();
             }
-
-            if (AmmoManager.Instance.ammoText != null)
-            {
-                AmmoManager.Instance.ammoText.text = $"{bulletsLeft / bulletsPerBurst}/{magazineSize / bulletsPerBurst}";
-            }
+            
         }
     }
 

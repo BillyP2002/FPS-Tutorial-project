@@ -5183,6 +5183,7 @@ MonoBehaviour:
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.2
+  isActiveWeapon: 0
   bulletsPerBurst: 1
   burstBulletsLeft: 0
   spreadIntensity: 0

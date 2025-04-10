@@ -58,7 +58,7 @@ public class WeaponManager : MonoBehaviour
 
     private void AddWeaponIntoActiveSlot(GameObject pickedUpWeapon)
     {
-        DropCurrentWeapon(pickedUpWeapon);
+        //DropCurrentWeapon(pickedUpWeapon);
         
         pickedUpWeapon.transform.SetParent(activeWeaponSlot.transform, false);
 
@@ -71,7 +71,7 @@ public class WeaponManager : MonoBehaviour
         weapon.animator.enabled = true;
     }
 
-    private void DropCurrentWeapon(GameObject pickedUpWeapon)
+    /*private void DropCurrentWeapon(GameObject pickedUpWeapon)
     {
         if (activeWeaponSlot.transform.childCount > 0)
         {
@@ -84,7 +84,7 @@ public class WeaponManager : MonoBehaviour
             weaponToDrop.transform.localPosition = pickedUpWeapon.transform.localPosition;
             weaponToDrop.transform.localRotation = pickedUpWeapon.transform.localRotation;
         }
-    }
+    }*/ //Weapon pick up functionality to be added, I had issues with it so I'm coming back to it later
 
     public void SwitchActiveSlot(int slotNumber)
     {
